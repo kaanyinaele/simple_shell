@@ -32,11 +32,5 @@ functionality, including executing external commands, handling internal commands
 	\`\`\`bash git clone https://github.com/kaanyinaele/simple_shell.git
 	cd simple_shell
 
-	To compile the shell: gcc -o shell shell.c utility_functions.c
-	other_files.c -Wall -Werror
-
-	To Run the compiled executable: ./shell
-
-
 
 
