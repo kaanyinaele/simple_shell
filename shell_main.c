@@ -1,4 +1,5 @@
 #include "shell.h"
+#include "utility_function.c"
 
 char *line = NULL;
 char **commands = NULL;
