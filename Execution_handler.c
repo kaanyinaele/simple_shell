@@ -8,39 +8,40 @@
  */
 void start_execution(char **current_command, int type_command)
 {
-    pid_t PID;
+	pid_t PID;
 
-    if (type_command == EXTERNAL_COMMAND || type_command == PATH_COMMAND)
-    {
-        PID = fork();
-        if (PID == -1)
-        {
-            perror("fork");
-            exit(EXIT_FAILURE);
-        }
+	if (type_command == EXTERNAL_COMMAND || type_command == PATH_COMMAND)
+	{
+		PID = fork();
+		if (PID == -1)
+		{
+			perror("fork");
+			exit(EXIT_FAILURE);
+		}
 
-        if (PID == 0)
-        {
-            execute_command(current_command, type_command);
-        }
-        else
-        {
-            int child_status;
-            waitpid(PID, &child_status, 0);
+		if (PID == 0)
+		{
+			execute_command(current_command, type_command);
+		}
+		else
+		{
+			int child_status;
 
-            if (WIFEXITED(child_status))
-            {
-                status = WEXITSTATUS(child_status);
-            }
-            else
-            {
-                // Handle abnormal child termination if needed
-                status = 1; // Set a default exit status
-            }
-        }
-    }
-    else
-    {
-        execute_command(current_command, type_command);
-    }
+			waitpid(PID, &child_status, 0);
+
+			if (WIFEXITED(child_status))
+			{
+				status = WEXITSTATUS(child_status);
+			}
+			else
+			{
+				/* Handle abnormal child termination if needed */
+				status = 1; /* Set a default exit status */
+			}
+		}
+	}
+	else
+	{
+		execute_command(current_command, type_command);
+	}
 }
