@@ -30,7 +30,6 @@ functionality, including executing external commands, handling internal commands
 1.  Clone the repository:
 
 	\`\`\`bash git clone https://github.com/kaanyinaele/simple_shell.git
-	cd simple_shell
 
 
 
